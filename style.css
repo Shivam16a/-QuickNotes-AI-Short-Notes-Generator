@@ -1,0 +1,413 @@
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --bg-gradient: linear-gradient(135deg, #0f172a, #1e1b4b);
+    --card-bg: #ffffff;
+    --text-main: #0f172a;
+    --text-muted: #475569;
+    --border-color: #e2e8f0;
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: white;
+}
+
+header h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #f8fafc;
+    /* बाक़ी सामान्य टेक्स्ट का रंग (Off-white) */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    /* मोबाइल स्क्रीन पर टेक्स्ट सही से रैप हो सके */
+    line-height: 1.3;
+}
+
+/* लोगो के लिए स्मूथ अलाइनमेंट */
+.brand-logo {
+    vertical-align: middle;
+    filter: drop-shadow(0 4px 12px rgba(79, 70, 229, 0.3));
+    /* लोगो पर हल्का सा ग्लो इफेक्ट */
+}
+
+/* मुख्य ब्रांड कंटेनर */
+.brand-name {
+    font-weight: 800;
+    /* ब्रांड नेम को बाक़ी टेक्स्ट से ज़्यादा बोल्ड दिखाना */
+    letter-spacing: -0.03em;
+    /* मॉडर्न टेक लोगो स्पेसिंग */
+    display: inline-flex;
+}
+
+/* Quick - डार्क या क्लीन सॉलिड वाइट (थीम के अनुसार) */
+.text-flat {
+    color: #ffffff;
+}
+
+/* Notes - जो आपके लोगो के Electric Violet / Cyan ग्रेडिएंट मैच करेगा */
+.text-gradient {
+    background: linear-gradient(135deg, #60a5fa, #a78bfa);
+    /* आपके लोगो के शेड्स से मैचिंग */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+}
+
+header .badge {
+    font-size: 1rem;
+    background: #ec4899;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+header p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* Responsive Grid Layout */
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
+
+.card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-group label {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+textarea {
+    width: 100%;
+    height: 150px;
+    resize: none;
+    padding: 15px;
+    font-size: 1rem;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border-color);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+textarea:focus,
+select:focus,
+input:focus {
+    border-color: var(--primary);
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+select,
+input {
+    padding: 12px;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--border-color);
+    font-size: 1rem;
+    width: 100%;
+    background: #f8fafc;
+}
+
+/* Button & Loader CSS */
+.btn {
+    padding: 14px 24px;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+}
+
+.loader {
+    display: none;
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ffffff;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Live Preview Side */
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #f1f5f9;
+    padding-bottom: 10px;
+}
+
+.btn-icon {
+    background: #f1f5f9;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+.btn-icon:hover {
+    background: #e2e8f0;
+}
+
+.notes-output {
+    background: #f8fafc;
+    padding: 25px;
+    border-radius: var(--radius-md);
+    min-height: 280px;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #334155;
+}
+
+/* Typography styles for Generated Notes */
+.notes-output h1 {
+    font-size: 1.6rem;
+    color: #1e1b4b;
+    margin: 20px 0 10px 0;
+}
+
+.notes-output h2 {
+    font-size: 1.3rem;
+    color: #4f46e5;
+    margin: 18px 0 8px 0;
+}
+
+.notes-output h3 {
+    font-size: 1.1rem;
+    color: #0d9488;
+    margin: 15px 0 5px 0;
+}
+
+.notes-output p {
+    margin-bottom: 12px;
+}
+
+.notes-output ul {
+    padding-left: 20px;
+    margin-bottom: 15px;
+}
+
+.notes-output li {
+    margin-bottom: 6px;
+}
+
+.export-zone {
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.export-zone h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+}
+
+.buttons-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.btn-pdf {
+    background: #ef4444;
+    color: white;
+}
+
+.btn-pdf:hover {
+    background: #dc2626;
+}
+
+.btn-docx {
+    background: #2563eb;
+    color: white;
+}
+
+.btn-docx:hover {
+    background: #1d4ed8;
+}
+
+.api-input-wrapper {
+    display: flex;
+    gap: 10px;
+    width: 100%;
+}
+
+.api-input-wrapper input {
+    flex: 1;
+}
+
+.api-key-group label a {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-msg {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 2px;
+}
+
+.status-msg.success {
+    color: #10b981;
+}
+
+.status-msg.error {
+    color: #ef4444;
+}
+
+.password-field-container {
+    position: relative;
+    /* यह आई बटन को इनपुट बॉक्स के अंदर ही लॉक रखेगा */
+    display: flex;
+    flex: 1;
+    align-items: center;
+}
+
+.toggle-eye-btn {
+    position: absolute;
+    right: 14px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #64748b;
+    /* स्लीक ग्रे कलर जो आँखों को चुभेगा नहीं */
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    transition: color 0.2s, transform 0.1s ease;
+}
+
+.toggle-eye-btn:hover {
+    color: #4f46e5;
+    /* होवर करने पर आपके प्राइमरी थीम कलर में बदल जाएगा */
+    transform: scale(1.1);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+
+    body {
+        padding: 15px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .options-grid,
+    .buttons-group {
+        grid-template-columns: 1fr;
+    }
+
+    .card {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 1.8rem;
+        gap: 8px;
+    }
+
+    .brand-logo {
+        width: 50px;
+    }
+}

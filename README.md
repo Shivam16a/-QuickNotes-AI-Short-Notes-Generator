@@ -1,0 +1,1 @@
+# -QuickNotes-AI-Short-Notes-Generator

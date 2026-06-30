@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="logo.svg" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickNotes</title>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.10/vfs_fonts.js"></script>
+    <script src="https://unpkg.com/docx@8.5.0/build/index.umd.js"></script>
+    <!-- Font Awesome Icons Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1>
+                <img src="./logo.svg" width="80" alt="logo" class="brand-logo">
+                <span class="brand-name">
+                    <span class="text-flat">Quick</span><span class="text-gradient">Notes</span>
+                </span>
+                AI Short Notes Generator <span class="badge">Pro</span>
+            </h1>
+            <p>Transform any topic into beautifully structured, AI-powered study notes.</p>
+        </header>
+
+        <main class="grid-layout">
+            <section class="card control-panel">
+                <div class="input-group">
+                    <label for="topic">📝 Enter Topic or Prompt</label>
+                    <textarea id="topic" autocomplete="off"
+                        placeholder="e.g., Explain Quantum Computing in simple terms or write a short note on Machine Learning..."></textarea>
+                </div>
+                <div class="input-group api-key-group">
+                    <label for="userApiKey">🔑 Enter Your Gemini API Key (<a href="https://aistudio.google.com/"
+                            target="_blank" style="color: #4f46e5; text-decoration: underline;">Get Free
+                            Key</a>)</label>
+                    <div class="api-input-wrapper">
+                        <div class="password-field-container">
+                            <input type="password" id="userApiKey" autocomplete="off" placeholder="your api key...">
+                            <!-- Font Awesome Eye Icon Button -->
+                            <button type="button" id="togglePasswordBtn" class="toggle-eye-btn"
+                                onclick="toggleApiKeyVisibility()" title="Show API Key">
+                                <i id="eyeIcon" class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <button id="saveKeyBtn" class="btn-icon" onclick="saveUserKey()">💾 Save Key</button>
+                    </div>
+                    <span id="apiStatusMessage" class="status-msg"></span>
+                </div>
+
+                <div class="options-grid">
+                    <div class="input-group">
+                        <label for="length">📏 Notes Length</label>
+                        <select id="length">
+                            <option value="100">Short (~100 words)</option>
+                            <option value="250" selected>Medium (~250 words)</option>
+                            <option value="500">Long (~500 words)</option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="customWords">🔢 Custom Word Count</label>
+                        <input type="number" id="customWords" autocomplete="off" placeholder="e.g., 300">
+                    </div>
+                </div>
+
+                <button id="generate" class="btn btn-primary">
+                    <span class="btn-text">Generate Notes</span>
+                    <div class="loader" id="loader"></div>
+                </button>
+            </section>
+
+            <section class="card preview-panel">
+                <div class="panel-header">
+                    <h2>✨ Live Preview</h2>
+                    <div class="action-buttons">
+                        <button onclick="copyNotes()" class="btn-icon" title="Copy to Clipboard">📋 Copy</button>
+                    </div>
+                </div>
+
+                <div id="notes" class="notes-output">
+                    Your generated notes will appear here in beautiful typography...
+                </div>
+
+                <div class="export-zone">
+                    <h3>📥 Export Document</h3>
+                    <div class="buttons-group">
+                        <button onclick="downloadPDF()" class="btn btn-pdf">📄 Download PDF</button>
+                        <button onclick="downloadDOCX()" class="btn btn-docx">🟦 Download DOCX</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- <script src="config.js"></script> -->
+    <script src="parser.js"></script>
+    <script src="preview.js"></script>
+    <script src="pdf.js"></script>
+    <script src="docx.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
