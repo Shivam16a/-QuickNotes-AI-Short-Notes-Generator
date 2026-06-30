@@ -15,7 +15,7 @@ window.addEventListener('load', () => {
     // लोकल स्टोरेज से की (Key) ढूँढें
     const savedKey = localStorage.getItem("QUICKNOTES_GEMINI_KEY");
     if (savedKey && apiKeyInput) {
-        apiKeyInput.value = ""; // सुरक्षा के लिए इनपुट बॉक्स को खाली रखें
+        apiKeyInput.value = ""; 
         statusMsg.textContent = "🔑 API Key loaded from secure storage.";
         statusMsg.className = "status-msg success";
     }
@@ -69,18 +69,19 @@ document.getElementById("generate").onclick = async () => {
     const notesBox = document.getElementById("notes");
     const loader = document.getElementById("loader");
     const btnText = document.querySelector(".btn-text");
-    const apiKeyInput = document.getElementById("userApiKey");
+    // const apiKeyInput = document.getElementById("userApiKey");
+    const savedKey = localStorage.getItem("QUICKNOTES_GEMINI_KEY");
 
     let topic = topicInput.value.trim();
     let length = document.getElementById("length").value;
     let customWords = document.getElementById("customWords").value;
-    let userKey = apiKeyInput.value.trim();
+    // let userKey = apiKeyInput.value.trim();
+    let userKey = savedKey;
 
     if (customWords) {
         length = customWords;
     }
 
-    // वैलिडेशन चेक करें
     if (!userKey) {
         alert("🚨 API Key is required! Please enter your Gemini API key to proceed.");
         apiKeyInput.focus();
